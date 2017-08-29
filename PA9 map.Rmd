@@ -1,0 +1,39 @@
+---
+title: "PA9 Map"
+author: "Pu Yang"
+date: "2017Äê8ÔÂ29ÈÕ"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown and leaflet assignment
+
+Instructions
+
+Create a web page using R Markdown that features a map created with Leaflet.
+
+Host your webpage on either GitHub Pages, RPubs, or NeoCities.
+
+Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet. We would love to see you show off your creativity!
+
+```{r icon}
+library(leaflet)
+ciscoIcon <- makeIcon(
+iconUrl = "http://www.cisco.com/web/fw/i/logo-open-graph.gif", 
+iconWidth = 31*215/230, iconHeight = 31,
+iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+
+ciscoLatLong <- data.frame(
+lat = c(37.412577, 37.410776, 37.430788),
+lng = c(-121.917040, -121.924144, -121.924145))
+
+ciscoLatLong %>%
+leaflet() %>%
+addTiles() %>%
+addMarkers(icon = ciscoIcon)
+```
+
